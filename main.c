@@ -9,6 +9,7 @@ int main(int c, char *args[]) {
 //    parseCommand(c, args);
     dirRead(c, args);
     commandLine(c, args);
+    VirMemory(c,args);
     parseCommand(c, args);
     return 0;
 }

@@ -8,7 +8,7 @@
 int commandLine(int c, char *v[])
 {
 	printf("Inside command line function");
-	int cLarg=open("/proc/5189/cmdline", O_RDONLY)  ;
+	int cLarg=open("/proc/71/cmdline", O_RDONLY)  ;
 	printf("hello cline\n");
 	if(cLarg<0)
 	{
