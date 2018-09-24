@@ -1,0 +1,1 @@
+int getProcessStateByPid(int pids[]);

@@ -3,7 +3,7 @@
 #include "parseCommand.h"
 #include "commandLine.h"
 
-int main(int c, char *args[]) {
+int mains(int c, char *args[]) {
     printf("argument list:  %s\n", args[1]);
     printf("Hello, World!\n");
 //    parseCommand(c, args);
