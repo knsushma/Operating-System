@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include <errno.h>
-#include <opencl-c.h>
+//#include <opencl-c.h>
 
 int getProcessInfoByPid(int pids[]) {
     if(sizeof(pids)>0) {
