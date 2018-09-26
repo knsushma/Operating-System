@@ -8,35 +8,63 @@
 #include <dirent.h>
 #include <errno.h>
 #include <string.h>
-int processUtime(int c, char *v[], int pids[])
-{
-    printf("Inside system time command");
-    if(sizeof(pids)>0) {
-        for (int i = 0; i < sizeof(pids) / sizeof(int); i++) {
-            char *processPath = printf("/proc/%d/stat/utime", pids[i]);
-            int cLarg = open(*processPath, O_RDONLY);
-            if (cLarg < 0) {
-                printf("error!!\n");
-                return 0;
-            } else {
-                printf("systime=%d\n", cLarg);
-            }
-            char *c = (char *) calloc(100, sizeof(char));
-            if (cLarg < 0) {
-                perror("r1");
-                exit(1);
-            }
-            int sz = read(cLarg, c, 10);
-            printf("called read(% d, c, 10). returned that" " %d bytes were read.\n", cLarg, sz);
-            c[sz] = '\0';
-            printf("Those bytes are as follows: % s\n", c);
+#include "processUtime.h"
 
-            *processPath = NULL;
-            free(*processPath);
+typedef char * string;
+
+int getProcessUtime(int pids[])
+{
+    printf("Inside UTime function\n");
+    if(sizeof(pids)>0) {
+
+        for (int i = 0; i < (sizeof(pids) / sizeof(int)) -1 ; i++) {
+            FILE *stream;
+            char line[256];
+            int count = 1;
+            char *data = NULL;
+
+            char *filePath;
+            asprintf(&filePath, "/proc/%d/stat", pids[i]);
+            stream = fopen(filePath, "r");
+
+            while (fgets(line, sizeof(line), stream)) {
+                    data = line;
+                    break;
+            }
+
+            char * stringSplit;
+            string array[15];
+            //printf("\nreading from function: %s",readSpecificLineFromFile(filePath, 5));
+            if (data!=NULL) {
+                stringSplit = strtok (data," ,.-");
+                while (stringSplit != NULL)
+                {
+                    char *filePath;
+                    asprintf(&filePath, "%s", stringSplit);
+                    array[count] = filePath;
+                    count++;
+                    stringSplit = strtok (NULL, " ,.-");
+                    if (count == 15) {
+                        break;
+                    }
+                }
+            }
+            printf("UTime: %s\n", array[14]);
+            fclose(stream);
+            *filePath = NULL;
         }
     }
-
     return 1;
 }
+
+//int main() {
+//    int pids[] = {1745};//{32490};
+//    getProcessUtime(pids);
+//    return 0;
+//}
+
+
+
+
 
 

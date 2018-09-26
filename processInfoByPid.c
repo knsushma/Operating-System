@@ -4,11 +4,12 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include "processInfoByPid.h"
 //#include <opencl-c.h>
 
 int getProcessInfoByPid(int pids[]) {
     if(sizeof(pids)>0) {
-        for (int i = 0; i < sizeof(pids)/sizeof(int); i++) {
+        for (int i = 0; i < (sizeof(pids)/sizeof(int))-1; i++) {
             //printf("PIDS: %d", pids[i]);
             struct stat sts;
             if (stat("/proc/<pid>", &sts) == -1 && errno == ENOENT) {
@@ -25,7 +26,7 @@ int getProcessInfoByPid(int pids[]) {
     return 1;
 }
 
-//int main(int c, char *args[]) {
+//int main() {
 //    int pids[] = {13260};
 //    getProcessInfoByPid(pids);
 //}

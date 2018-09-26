@@ -1,1 +1,1 @@
-int processUtime(int c, char *args, int pids[]);
+int getProcessUtime(int pids[]);

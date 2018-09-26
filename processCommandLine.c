@@ -5,7 +5,9 @@
 #include <dirent.h>
 #include <errno.h>
 #include <string.h>
-int getCommandLineOfProc(int c, char *v[], int pids[])
+#include "processCommandLine.h"
+
+int getCommandLineOfProc(int pids[])
 {
 	printf("Inside command line function");
 	if(sizeof(pids)>0) {
@@ -20,14 +22,11 @@ int getCommandLineOfProc(int c, char *v[], int pids[])
 			int cLarg = open(filePath, O_RDONLY);
 			if (cLarg < 0) {
 				printf("error!!\n");
-				exit(1);
 			} else {
-				printf("commandLine=%d\n", cLarg);
 				char *c = (char *) calloc(100, sizeof(char));
 				int sz = read(cLarg, c, 10);
-				printf("called read(% d, c, 10). returned that %d bytes were read.\n", cLarg, sz);
 				c[sz] = '\0';
-				printf("Those bytes are as follows: % s\n", c);
+				printf("CMD: % s\n", c);
 			}
 
 			*filePath = NULL;
@@ -37,7 +36,7 @@ int getCommandLineOfProc(int c, char *v[], int pids[])
 	return 1;
 }
 
-//int main(int c, char *args[]) {
+//int main() {
 //    int pids[] = {1745};
 //	getCommandLineOfProc(c, args, pids);
 //}

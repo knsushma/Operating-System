@@ -1,1 +1,1 @@
-int commandLine(int c, char *v, int pids[]);
+int getCommandLineOfProc(int pids[]);

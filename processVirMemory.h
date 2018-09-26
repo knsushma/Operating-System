@@ -1,1 +1,1 @@
-int VirMemory(int c, char *v[], int pids[]);
+int getProcessVirtualMemory(int pids[]);
