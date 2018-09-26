@@ -17,7 +17,8 @@ int getProcessInfoByPid(int pids[]) {
                 printf("process info will be displayed");
             }
         }
-    } else {
+    }
+    else {
         printf("Empty process ID list found. Please provide PID to get process info.");
         return 0;
     }
