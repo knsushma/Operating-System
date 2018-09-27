@@ -12,7 +12,9 @@ int getProcessInfoByPid(int pids[]) {
         for (int i = 0; i < (sizeof(pids)/sizeof(int))-1; i++) {
             //printf("PIDS: %d", pids[i]);
             struct stat sts;
-            if (stat("/proc/<pid>", &sts) == -1 && errno == ENOENT) {
+            char *processPath;
+            asprintf(&processPath, "/proc/%d", pids[i]);
+            if (stat(processPath, &sts) == -1 && errno == ENOENT) {
                 printf("Process with PID: %d does not exist", pids[i]);
             } else {
                 printf("process info will be displayed");

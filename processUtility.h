@@ -1,1 +1,2 @@
-//extern char * readSpecificLineFromFile(char *filePath, int readline);
+char * readSpecificLineFromFile1(char *filePath, int readline);
+int processMentioned(char *args[]);

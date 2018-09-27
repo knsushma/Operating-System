@@ -4,33 +4,45 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "processUtime.h"
+#include <stdbool.h>
+#include "processUtility.h"
 
 //#include <readline/readline.h>
 //#include <readline/history.h>
 
-int getPidsByUserId() {
+typedef char * string;
+
+int processMentioned(char *args[]) {
+    for (int i = 0; i < sizeof(args); ++i) {
+        if (args[i]=="-p") {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+string readSpecificLineFromFile1(char *filePath, int readline) {
+    FILE *stream;
+    char line[256];
+    int count = 0;
+    string data;
+
+    stream = fopen(filePath, "r");
+    printf(fgets(line, sizeof(line), stream));
+    while (fgets(line, sizeof(line), stream)) {
+        count++;
+        if (count == readline) {
+            printf("%s", line);
+            data = line;
+        }
+    }
+
+    return data;
 
 }
 
-//char * readSpecificLineFromFile(char *filePath, int readline) {
-//    FILE *stream;
-//    char line[256];
-//    int count = 0;
-//    char *data;
-//
-//    stream = fopen(filePath, "r");
-//    while (fgets(line, sizeof(line), stream)) {
-//        count++;
-//        if (count == readline) {
-//            printf("%s", line);
-//            data = line;
-//        }
-//    }
-//
-//    return data;
-//
-//}
+
+
 
 
 //int fileRead(char *filename) {
