@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/sushmakn/wisconsin/projects/os/Operating-System/dirRead.h
+
+/Users/sushmakn/wisconsin/projects/os/Operating-System/helper.h
+
+/Users/sushmakn/wisconsin/projects/os/Operating-System/parseCommand.h
+
+/Users/sushmakn/wisconsin/projects/os/Operating-System/processUtility.h
+helper.h
+/Users/sushmakn/wisconsin/projects/os/Operating-System/helper.h
+
+/Users/sushmakn/wisconsin/projects/os/Operating-System/ps537Handler.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+dirent.h
+-
+ps537Handler.h
+/Users/sushmakn/wisconsin/projects/os/Operating-System/ps537Handler.h
+processUtility.h
+/Users/sushmakn/wisconsin/projects/os/Operating-System/processUtility.h
+dirRead.h
+/Users/sushmakn/wisconsin/projects/os/Operating-System/dirRead.h
+parseCommand.h
+/Users/sushmakn/wisconsin/projects/os/Operating-System/parseCommand.h
+
+/Users/sushmakn/wisconsin/projects/os/Operating-System/ps537Handler.h
+
