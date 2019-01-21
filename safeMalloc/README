@@ -1,0 +1,47 @@
+Srujana:
+        Malloc537 functionality
+        Free537 functionality
+        Deletion of overlapping free nodes 
+        
+Sushma:
+        Realloc537 functionality
+        Memcheck537 functionality
+        Range Tree
+
+We have taken the basic tree opearations from : http://www.edufyme.com/code/?id=34173cb38f07f89ddbebc2ac9128303f
+Made couple of changes to make it work like Range tree and even deleteNode functionality is totally changed by us.
+
+
+EXTRA CREDIT:
+
+Malloc537:
+
+	1. Display error if malloc537 is called on the already allocated memory location.
+	2. If actual malloc returned some middle address of the free node, split node and allocate the requested size. Either delete or free the remaining range in the free node. 
+	3. Handled the case to delete multiple free memory blocks if new malloc547 allocation overlaps with them.
+	4. Display error message if trying to allocate memory which is partially free (When size is very large, Initial few blocks of memory in that range are free but not all of them, check whole size range if none of them are allocated)
+
+
+Realloc537 (ptr, size):
+
+	1. Display error if ptr is not allocated by malloc537 ["Memory not allocated by malloc537"].
+	2. Check if ptr is the starting address of the allocated memory location, otherwise error out and terminate the program.
+	3. Error out if ptr is already freed.
+	4. Upon calling actual realloc():
+		i. Check if it shrinks memory in the same old allocated block, if it's shrink either delete or add a free node for the remaining memory blocks.
+		ii. Check if realloc() allocates in any available freed block. If yes, delete all overlapping freed nodes.
+		iii. If none of the above 2 cases occurs then allocate a new block and free the existing block on which realloc() is called
+
+
+Free537:
+
+	1. Display error if freeing memory that is not allocated with malloc537().
+	2. Freeing memory that is not the first byte of the range of memory that was allocated. Display error in this case. 
+	3. Freeing memory that was previously freed (double free).
+
+
+Memcheck537 (ptr, size):
+
+	1. Check if memory is allocated by malloc537, i.e. hek if ptr exists in Range tree
+	2. ptr is allocated but trying to access a memory location which is beyond the range of allocated memory block.
+	3. Trying to access a memory location which is already freed.
